@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NetCore.Library.Identity
+namespace NetCore.WebAppi.Identity
 {
     public class UserInfo
     {

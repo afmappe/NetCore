@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using NetCore.Library.Common;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -8,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NetCore.Library.Infrastructure.Data
+namespace NetCore.WebAppi.Data.Repositories
 {
     public abstract class AsyncRepositoryBase<TEntityType, TContextType> :
          IAsyncRepository<TEntityType>
@@ -128,9 +127,9 @@ namespace NetCore.Library.Infrastructure.Data
         {
             TContextType context = default(TContextType);
 
-            DbContextOptionsBuilder<NetCoreContext> contextOptionsBuilder = new DbContextOptionsBuilder<NetCoreContext>();
+            DbContextOptionsBuilder<ApplicationDbContext> contextOptionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-            LoggerFactory loggerFactory = new LoggerFactory(); // this will allow us to add loggers so we can actually inspect what code and queries EntityFramework produces.
+            LoggerFactory loggerFactory = new LoggerFactory();
 
             DbConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder()
             {
@@ -139,11 +138,10 @@ namespace NetCore.Library.Infrastructure.Data
                 InitialCatalog = "NETCoreTest",
             };
             SqlConnection connection = new SqlConnection(connectionStringBuilder.ConnectionString);
-            //connection.Open();
 
-            contextOptionsBuilder.UseLoggerFactory(loggerFactory); // register the loggers inside the context options builder, this way, entity framework logs the queries
-            contextOptionsBuilder.UseSqlServer(connection); // we're telling entity framework to use the SQLite connection we created.
-            contextOptionsBuilder.EnableSensitiveDataLogging(); // this will give us more insight when something does go wrong. It's ok to use it here since it's a testing project, but be careful about enabling this in production.
+            contextOptionsBuilder.UseLoggerFactory(loggerFactory);
+            contextOptionsBuilder.UseSqlServer(connection);
+            contextOptionsBuilder.EnableSensitiveDataLogging();
 
             context = (TContextType)Activator.CreateInstance(typeof(TContextType), contextOptionsBuilder.Options, "dbo");
             return context;

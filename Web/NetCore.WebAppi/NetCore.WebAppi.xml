@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetCore.WebAppi</name>
+    </assembly>
+    <members>
+        <member name="F:NetCore.WebAppi.Controllers.AuthenticationController.Mediator">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:NetCore.WebAppi.Controllers.AuthenticationController.#ctor(MediatR.IMediator)">
+             <summary>
+            
+             </summary>
+             <param name="mediator"></param>
+        </member>
+        <member name="M:NetCore.WebAppi.Controllers.AuthenticationController.Authenticate(NetCore.WebAppi.Identity.Commands.UserAuthenticateCommand.Request)">
+            <summary>
+            Hello World
+            </summary>
+            <param name="request">Param 1</param>
+            <returns>Response</returns>
+            <remarks>Hello</remarks>
+        </member>
+        <member name="T:NetCore.WebAppi.Identity.Commands.UserAuthenticateCommand.Handler">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequestHandler`2"/>
+            </summary>
+        </member>
+        <member name="M:NetCore.WebAppi.Identity.Commands.UserAuthenticateCommand.Handler.#ctor(Microsoft.Extensions.Options.IOptions{NetCore.WebAppi.Helpers.AppSettings},NetCore.WebAppi.Identity.Repositories.IUserRepository)">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:NetCore.WebAppi.Identity.Commands.UserAuthenticateCommand.Handler.Handle(NetCore.WebAppi.Identity.Commands.UserAuthenticateCommand.Request,System.Threading.CancellationToken)">
+            <summary>
+            Implementation of <see cref="M:MediatR.IRequestHandler`2.Handle(`0,System.Threading.CancellationToken)"/>
+            </summary>
+        </member>
+        <member name="M:NetCore.WebAppi.Identity.Commands.UserAuthenticateCommand.Handler.GenerateUserToken(NetCore.WebAppi.Identity.UserInfo)">
+            <summary>
+            Authentication successful so generate jwt token
+            </summary>
+            <param name="user">User information</param>
+            <returns>Jwt Token</returns>
+        </member>
+        <member name="P:NetCore.WebAppi.Identity.Commands.UserAuthenticateCommand.Request.Password">
+            <summary>
+            User Password
+            </summary>
+        </member>
+        <member name="P:NetCore.WebAppi.Identity.Commands.UserAuthenticateCommand.Request.UserName">
+            <summary>
+            UserName
+            </summary>
+        </member>
+        <member name="P:NetCore.WebAppi.Identity.Commands.UserAuthenticateCommand.Response.Token">
+            <summary>
+            User JWT Token
+            </summary>
+        </member>
+        <member name="P:NetCore.WebAppi.Identity.UserInfo.CreationDate">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:NetCore.WebAppi.Identity.UserInfo.FullName">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:NetCore.WebAppi.Identity.UserInfo.Id">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:NetCore.WebAppi.Identity.UserInfo.UserName">
+             <summary>
+            
+             </summary>
+        </member>
+    </members>
+</doc>

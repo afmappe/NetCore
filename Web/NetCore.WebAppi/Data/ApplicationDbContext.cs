@@ -1,20 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NetCore.Library.Identity;
-using NetCore.Library.Infrastructure.Data.Mapper;
+using NetCore.WebAppi.Data.Mapper;
+using NetCore.WebAppi.Identity;
 
-namespace NetCore.Library.Infrastructure.Data
+namespace NetCore.WebAppi.Data
 {
-    public class NetCoreContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public string Schema { get; set; }
-
-        public DbSet<UserInfo> Users { get; set; }
-
-        public NetCoreContext(DbContextOptions<NetCoreContext> options, string schema = null)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, string schema = null)
             : base(options)
         {
             Schema = !string.IsNullOrEmpty(schema) ? schema : "dbo";
         }
+
+        public string Schema { get; set; }
+
+        public DbSet<UserInfo> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
